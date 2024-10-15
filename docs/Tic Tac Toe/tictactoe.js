@@ -110,6 +110,12 @@
   
         return false;
       }
+
+      function restartGame() {
+        gameOver = false;
+        currentPlayer = PLAYER_X;
+        startGame();
+      }
   
     
   
@@ -117,6 +123,7 @@
  // #region Event Listeners
 
     canvas.addEventListener("mousedown", handleGridClick);
+    restartButton.addEventListener("mousedown", restartGame);
 
 
 

@@ -126,6 +126,15 @@
     restartButton.addEventListener("mousedown", restartGame);
 
 
+    function convertCartesiansToGrid(xPos, yPos) {
+        // Convert the canvas click position into grid coordinates
+        return {
+          column: Math.floor(xPos / CELL_WIDTH),
+          row: Math.floor(yPos / CELL_HEIGHT),
+        };
+      }
+
+
 
 
   });

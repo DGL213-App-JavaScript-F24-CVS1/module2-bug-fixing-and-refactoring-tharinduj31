@@ -23,6 +23,11 @@
     let currentPlayer = PLAYER_X;
     let gameOver = false;
 
+    function startGame() {
+        initializeGrid();
+        render();
+        updateTurnDisplay();
+      }
 
 
 

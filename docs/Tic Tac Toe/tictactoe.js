@@ -38,6 +38,25 @@
         playerTurnText.textContent = `Player ${currentPlayer}'s Turn`;
       }
 
+      function render() {
+        // Clear the canvas for re-rendering
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let row = 0; row < CELLS_PER_AXIS; row++) {
+          for (let col = 0; col < CELLS_PER_AXIS; col++) {
+            // Draw grid lines
+            ctx.strokeRect(col * CELL_WIDTH, row * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
+  
+            // Draw X or O in the grid cell if it exists
+            const cellValue = grid[row][col];
+            if (cellValue) {
+              ctx.font = "48px Arial";
+              ctx.textAlign = "center";
+              ctx.textBaseline = "middle";
+              ctx.fillText(cellValue, col * CELL_WIDTH + CELL_WIDTH / 2, row * CELL_HEIGHT + CELL_HEIGHT / 2);
+            }
+          }
+        }
+      }
 
 
 

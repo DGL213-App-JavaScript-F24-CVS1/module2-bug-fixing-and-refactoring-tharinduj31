@@ -111,6 +111,11 @@
         return false;
       }
 
+      function checkDraw() {
+        // Check if every cell is filled and no winner has been declared
+        return grid.flat().every(cell => cell !== EMPTY_CELL);
+      }
+
       function restartGame() {
         gameOver = false;
         currentPlayer = PLAYER_X;

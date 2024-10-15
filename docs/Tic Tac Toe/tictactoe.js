@@ -18,6 +18,12 @@
      const PLAYER_X = "X";
      const PLAYER_O = "O";
 
+     // Game state
+    let grid = [];
+    let currentPlayer = PLAYER_X;
+    let gameOver = false;
+
+
 
 
 

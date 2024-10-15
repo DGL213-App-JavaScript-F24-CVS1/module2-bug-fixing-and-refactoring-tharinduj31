@@ -134,6 +134,9 @@
         };
       }
 
+       // Start the game
+    startGame();
+
 
 
 

@@ -58,6 +58,33 @@
         }
       }
 
+      function handleGridClick(event) {
+        if (gameOver) return; // Don't allow actions after the game is over
+  
+        const { column, row } = convertCartesiansToGrid(event.offsetX, event.offsetY);
+  
+        // Only allow a move if the cell is empty
+        if (grid[row][column] === EMPTY_CELL) {
+          grid[row][column] = currentPlayer; // Mark the cell with the current player's symbol
+          render(); // Update the visual representation of the grid
+  
+          if (checkWin()) {
+            playerTurnText.textContent = `Player ${currentPlayer} Wins!`;
+            gameOver = true;
+          } else if (checkDraw()) {
+            playerTurnText.textContent = "It's a Draw!";
+            gameOver = true;
+          } else {
+            switchPlayer();
+            updateTurnDisplay();
+          }
+        }
+      }
+
+ // #region Event Listeners
+
+    canvas.addEventListener("mousedown", handleGridClick);
+
 
 
 

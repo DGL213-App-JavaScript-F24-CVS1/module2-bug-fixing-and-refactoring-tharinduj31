@@ -28,6 +28,11 @@
         render();
         updateTurnDisplay();
       }
+      
+      function initializeGrid() {
+        // Create a 3x3 grid with empty cells
+        grid = Array(CELLS_PER_AXIS).fill().map(() => Array(CELLS_PER_AXIS).fill(EMPTY_CELL));
+      }
 
 
 

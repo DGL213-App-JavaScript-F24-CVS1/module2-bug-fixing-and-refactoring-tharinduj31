@@ -34,6 +34,9 @@
         grid = Array(CELLS_PER_AXIS).fill().map(() => Array(CELLS_PER_AXIS).fill(EMPTY_CELL));
       }
 
+      function updateTurnDisplay() {
+        playerTurnText.textContent = `Player ${currentPlayer}'s Turn`;
+      }
 
 
 

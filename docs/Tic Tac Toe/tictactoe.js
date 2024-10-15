@@ -81,6 +81,39 @@
         }
       }
 
+
+      function switchPlayer() {
+        // Swap the current player between X and O
+        currentPlayer = currentPlayer === PLAYER_X ? PLAYER_O : PLAYER_X;
+      }
+  
+      function checkWin() {
+        // Check rows, columns, and diagonals for a winning condition
+        for (let i = 0; i < CELLS_PER_AXIS; i++) {
+          // Check each row
+          if (grid[i][0] !== EMPTY_CELL && grid[i][0] === grid[i][1] && grid[i][1] === grid[i][2]) {
+            return true;
+          }
+          // Check each column
+          if (grid[0][i] !== EMPTY_CELL && grid[0][i] === grid[1][i] && grid[1][i] === grid[2][i]) {
+            return true;
+          }
+        }
+  
+        // Check the two diagonals
+        if (grid[0][0] !== EMPTY_CELL && grid[0][0] === grid[1][1] && grid[1][1] === grid[2][2]) {
+          return true;
+        }
+        if (grid[0][2] !== EMPTY_CELL && grid[0][2] === grid[1][1] && grid[1][1] === grid[2][0]) {
+          return true;
+        }
+  
+        return false;
+      }
+  
+    
+  
+
  // #region Event Listeners
 
     canvas.addEventListener("mousedown", handleGridClick);

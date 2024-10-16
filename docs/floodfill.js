@@ -27,7 +27,7 @@ const CELL_COLORS = {
 const CELLS_PER_AXIS = 9;
 const CELL_WIDTH = canvas.width/CELLS_PER_AXIS;
 const CELL_HEIGHT = canvas.height/CELLS_PER_AXIS;
-const MAXIMUM_SCORE = CELLS_PER_AXIS * CELLS_PER_AXIS;;
+const MAXIMUM_SCORE = CELLS_PER_AXIS * CELLS_PER_AXIS;         //removed extra semi-colan 
 
 // Game objects
 let replacementColor = CELL_COLORS.white;
@@ -62,7 +62,7 @@ function initializeHistory(startingGrid) {
 }   
 
 function rollBackHistory() {
-    if (grids.length > 0) {
+    if (grids.length > 1) {                          // grids.length needs more than 1
         grids = grids.slice(0, grids.length-1);
         render(grids[grids.length-1]);
     }
@@ -87,7 +87,7 @@ function transposeGrid() {
 
 function render(grid) {
     for (let i = 0; i < grid.length; i++) {
-        ctx.fillStyle = `rgb(${grid[i][0]}, ${grid[i][0]}, ${grid[i][2]})`;
+        ctx.fillStyle = `rgb(${grid[i][0]}, ${grid[i][1]}, ${grid[i][2]})`;        // Fixed array index typo
         ctx.fillRect((i % CELLS_PER_AXIS) * CELL_WIDTH, Math.floor(i / CELLS_PER_AXIS) * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
     }
     playerScoreText.textContent = playerScore;
@@ -96,7 +96,7 @@ function render(grid) {
 function updateGridAt(mousePositionX, mousePositionY) {
     const gridCoordinates = convertCartesiansToGrid(mousePositionX, mousePositionY);
     const newGrid = grids[grids.length-1].slice(); 
-    floodFill(newGrid, gridCoordinates, newGrid[gridCoordinates.column * CELLS_PER_AXIS + gridCoordinates.row])
+    floodFill(newGrid, gridCoordinates, newGrid[gridCoordinates.row * CELLS_PER_AXIS + gridCoordinates.column]);     //row and column 
     grids.push(newGrid);
     render(grids[grids.length-1]);    
 }
